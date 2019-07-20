@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Data Visualization Assignment 2</title>
+    <!-- D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+    <!-- Plotly Js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    
+    <script defer src="graphing.js"></script>
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"
+    />
+  </head>
+  <body>
+    <div class="container" style="margin-top: 1%;">
+      <h2>Hello, Sukhy!</h2>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="home-tab"
+            data-toggle="tab"
+            href="#home"
+            role="tab"
+            aria-controls="home"
+            aria-selected="true"
+            >Profit Analysis</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="profile-tab"
+            data-toggle="tab"
+            href="#profile"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+            >Actor Analysis</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
+          <div class="row">
+            <div id="chart-1" class="col-9" style="height: 100%"></div>
+            <div class="card col-3">
+              <div class="card-body">
+                <h5 class="card-title">Settings</h5>
+                <p class="card-text">Profit Made</p>
+                <form
+                  id="profit-analysis"
+                  onsubmit="form_inputs(); return false;"
+                >
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input
+                      step="1000000"
+                      id="profit-value"
+                      type="number"
+                      class="form-control"
+                      placeholder="Profit"
+                      aria-label="Username"
+                      aria-describedby="profit-value"
+                      required
+                    />
+                  </div>
+                  <label for="movie-genre">Select Genre:</label>
+                  <div class="input-group mb-3">
+                    <select class="form-control" id="movie-genre" value="All">
+                      <option value="-1">All</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-info">Plot</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="profile"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+        >
+          <div class="row">
+            <div id="chart-2" class="col-9" style="height: 100%"></div>
+            <div class="card col-3">
+              <div class="card-body">
+                <h5 class="card-title">Settings</h5>
+                <p class="card-text">Profit Made</p>
+                <form
+                  id="genre-analysis"
+                  onsubmit="form_inputs(); return false;"
+                >
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input
+                      step="1000000"
+                      id="profit-value"
+                      type="number"
+                      class="form-control"
+                      placeholder="Profit"
+                      aria-label="Username"
+                      aria-describedby="profit-value"
+                      required
+                    />
+                  </div>
+                  <label for="movie-genre-multi">Select Genre:</label>
+                  <div class="input-group mb-3">
+                    <select
+                      class="selectpicker"
+                      multiple
+                      data-live-search="true"
+                      data-selected-text-format="count > 2"
+                    >
+                      <option>Mustard</option>
+                      <option>Ketchup</option>
+                      <option>Relish</option>
+                      <option>Tomato</option>
+                      <option>Lettuce</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-info">Plot</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $("#selectpicker").selectpicker();
+    </script>
+  </body>
+</html>

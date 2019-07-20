@@ -1,5 +1,5 @@
 const form_inputs = async () => {
-  let x = document.forms["settings"];
+  let x = document.forms["profit-analysis"];
   let profit_value = x.elements["profit-value"].value;
   let selected_genre = x.elements["movie-genre"].value;
   let filtered_dataset = dataset
@@ -94,7 +94,7 @@ const test_init = async () => {
       }
     }
   };
-  test = await Plotly.newPlot("myDiv", data, layout, { responsive: true });
+  test = await Plotly.newPlot("chart-1", data, layout, { responsive: true });
   await modify_elements();
 };
 
