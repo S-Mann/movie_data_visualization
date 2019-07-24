@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Data Visualization Assignment 2</title>
+    <title>10510031 Sukhinderpal Mann - Data Visualization Assignment 2</title>
     <!-- D3 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
     <!-- Plotly Js -->
@@ -10,9 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-    
-    <script defer src="graphing.js"></script>
-
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet"
@@ -23,10 +20,51 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"
     />
+    <style>
+      .center {
+        margin: auto;
+        width: 50%;
+        border: 3px solid green;
+        padding: 10px;
+      }
+
+      .loader {
+        margin-top: 10%;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid blue;
+        border-right: 16px solid green;
+        border-bottom: 16px solid red;
+        border-left: 16px solid pink;
+        width: 240px;
+        height: 240px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <script defer src="graphing.js"></script>
   </head>
   <body>
     <div class="container" style="margin-top: 1%;">
-      <h2>Hello, Sukhy!</h2>
+      <h2>Cinelysis</h2>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a
@@ -37,7 +75,7 @@
             role="tab"
             aria-controls="home"
             aria-selected="true"
-            >Profit Analysis</a
+            >Movie Analysis</a
           >
         </li>
         <li class="nav-item">
@@ -60,11 +98,12 @@
           role="tabpanel"
           aria-labelledby="home-tab"
         >
+          <div class="loader center" id="loading-spinner"></div>
           <div class="row">
             <div id="chart-1" class="col-9" style="height: 100%"></div>
-            <div class="card col-3">
+            <div class="card col-3" id="form-div">
               <div class="card-body">
-                <h5 class="card-title">Settings</h5>
+                <h5 class="card-title">Movies</h5>
                 <p class="card-text">Profit Made</p>
                 <form
                   id="profit-analysis"
@@ -107,40 +146,20 @@
             <div id="chart-2" class="col-9" style="height: 100%"></div>
             <div class="card col-3">
               <div class="card-body">
-                <h5 class="card-title">Settings</h5>
-                <p class="card-text">Profit Made</p>
-                <form
-                  id="genre-analysis"
-                  onsubmit="form_inputs(); return false;"
-                >
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">$</span>
-                    </div>
-                    <input
-                      step="1000000"
-                      id="profit-value"
-                      type="number"
-                      class="form-control"
-                      placeholder="Profit"
-                      aria-label="Username"
-                      aria-describedby="profit-value"
-                      required
-                    />
-                  </div>
-                  <label for="movie-genre-multi">Select Genre:</label>
+                <h5 class="card-title">Actor</h5>
+                <p class="card-text">Average Profit Made (as per Movie profit, featured actors have appeared in more than 2 movies)</p>
+                <form id="actor-analysis" onsubmit="actor_analysis_form(); return false;">
+                  <label for="movie-actor-multi">Select Artist:</label>
                   <div class="input-group mb-3">
                     <select
                       class="selectpicker"
+                      id="actor-search"
                       multiple
                       data-live-search="true"
                       data-selected-text-format="count > 2"
+                      required
                     >
-                      <option>Mustard</option>
-                      <option>Ketchup</option>
-                      <option>Relish</option>
-                      <option>Tomato</option>
-                      <option>Lettuce</option>
+                      <option id="all-select" value="-1">All</option>
                     </select>
                   </div>
                   <button class="btn btn-info">Plot</button>
@@ -152,7 +171,19 @@
       </div>
     </div>
     <script>
-      $("#selectpicker").selectpicker();
+      $("#actor-search").on("changed.bs.select", function(
+        e,
+        clickedIndex,
+        isSelected,
+        previousValue
+      ) {
+        if (clickedIndex == 0 && isSelected) {
+          $("#actor-search").selectpicker("selectAll");
+        }
+        if (clickedIndex == 0 && !isSelected) {
+          $("#actor-search").selectpicker("deselectAll");
+        }
+      });
     </script>
   </body>
 </html>
