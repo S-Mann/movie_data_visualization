@@ -21,6 +21,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"
     />
     <style>
+      @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
       .center {
         margin: auto;
         width: 50%;
@@ -90,6 +95,18 @@
             >Actor Analysis</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="verdict-tab"
+            data-toggle="tab"
+            href="#verdict"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+            >Findings</a
+          >
+        </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div
@@ -147,8 +164,14 @@
             <div class="card col-3">
               <div class="card-body">
                 <h5 class="card-title">Actor</h5>
-                <p class="card-text">Average Profit Made (as per Movie profit, featured actors have appeared in more than 2 movies)</p>
-                <form id="actor-analysis" onsubmit="actor_analysis_form(); return false;">
+                <p class="card-text">
+                  Average Profit Made (as per Movie profit, featured actors have
+                  appeared in more than 2 movies)
+                </p>
+                <form
+                  id="actor-analysis"
+                  onsubmit="actor_analysis_form(); return false;"
+                >
                   <label for="movie-actor-multi">Select Artist:</label>
                   <div class="input-group mb-3">
                     <select
@@ -165,6 +188,106 @@
                   <button class="btn btn-info">Plot</button>
                 </form>
               </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="verdict"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+        >
+          <div class="container">
+            <h3>Movie Findings</h3>
+            <div class="container row">
+              <p>
+                In the analysis I found
+                <a
+                  href="https://en.wikipedia.org/wiki/Changes_in_Star_Wars_re-releases#Star_Wars_release_history"
+                  target="_blank"
+                  >Star Wars</a
+                >
+                to be a weird outlier. It had a very small budget but ended up
+                making millions of dollars in revenue which lead me to research
+                more on the movie and it's interesting how the movie was
+                re-released 2 times in 3 different decades, it was first
+                released in 1977, then it was re-released in 1981, then 1985,
+                and then finally a VHS version 1995 with the re-release.
+              </p>
+              <p>
+                Then there is another outlier that is
+                <a
+                  href="https://en.wikipedia.org/wiki/Avatar_(2009_film)#Box_office"
+                  target="_blank"
+                  >Avatar</a
+                >, which has made abusrdly high revenue. The second closest is
+                <a
+                  href="https://en.wikipedia.org/wiki/Titanic_(1997_film)#Box_office"
+                  target="_blank"
+                  >Titanic</a
+                >
+                which is 1 billion dollars less in revenue. Another movie which
+                was very odd was
+                <a
+                  href="https://en.wikipedia.org/wiki/The_Lone_Ranger_(2013_film)#Critical_response"
+                  target="_blank"
+                  >The Lone Ranger</a
+                >
+                which had a really good budget but was a failure at the
+                box-office. Reading more into it I saw the movie had casting
+                issues, bad script but most importantly it went against really
+                big movies, like
+                <a
+                  href="https://en.wikipedia.org/wiki/Despicable_Me_2#Box_office"
+                  target="_blank"
+                  >Despicable Me 2</a
+                >
+                which is one of the top 50 earners of all time.
+              </p>
+            </div>
+          </div>
+          <div class="container">
+            <h3>Actor Findings</h3>
+            <div class="container row">
+              <p>
+                In this analysis I saw that
+                <a
+                  href="https://en.wikipedia.org/wiki/Mark_Hamill"
+                  target="_blank"
+                  >Mark Hamill</a
+                >
+                famous for his role as
+                <a
+                  href="https://en.wikipedia.org/wiki/Mark_Hamill"
+                  target="_blank"
+                  >Luke Skywalker</a
+                >
+                has been highly rated across his films and has had 3rd most
+                average profit for his movies.
+              </p>
+              <p>
+                There aren't strong trends of female actors leading the charts
+                in average profit for their movies. The most profitable male
+                actor according to the box-office sales is
+                <a
+                  href="https://en.wikipedia.org/wiki/Chris_Pratt"
+                  target="_blank"
+                  >Chris Pratt</a
+                >
+                who's movies on an average makes a profit of almost 800 million
+                dollars while the best female actor
+                <a
+                  href="https://en.wikipedia.org/wiki/Zoe_Saldana"
+                  target="_blank"
+                  >Zoe Saldana</a
+                >
+                makes almost 400 million dollars which is half of the male
+                counter-part.
+                <b>
+                  <i>Note:</i> These aren't the actor's earnings, this is the
+                  profit their movies made.
+                </b>
+              </p>
             </div>
           </div>
         </div>
