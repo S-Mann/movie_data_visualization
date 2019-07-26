@@ -172,8 +172,8 @@ const init = async () => {
   let form_div = document.getElementById("form-div");
   let loading_spinner = document.getElementById("loading-spinner");
   form_div.style.display = "none";
-  dataset = await d3.csv("dataset/dataset.csv");
-  credits_dataset = await d3.csv("dataset/credits_dataset.csv");
+  dataset = await d3.csv("https://raw.githubusercontent.com/S-Mann/data_visualization_asg2/master/dataset/dataset.csv");
+  credits_dataset = await d3.csv("https://raw.githubusercontent.com/S-Mann/data_visualization_asg2/master/dataset/credits_dataset.csv");
   dataset.map(row => (row.profit = row.revenue - row.budget));
 
   await modify_elements();
